@@ -25,11 +25,20 @@ Text: primary text 125 chars shows before "See more". Headline 27 chars. Descrip
 
 Title max 300 chars, but keep it under 100. Reddit rewards ads that read like posts, not ads.
 
-## Ready-to-cut assets
+## Ready-made creatives (in `ads/`)
 
-- `assets/og-image.jpg` (1200 × 687) → crop to 1080 × 1080 with the squirrel and cabinet both in frame for the feed image.
-- `assets/gameplay.gif` → convert to MP4 for a 5 sec feed video: `ffmpeg -i assets/gameplay.gif -movflags faststart -pix_fmt yuv420p -vf "scale=1080:-2,pad=1080:1080:(ow-iw)/2:(oh-ih)/2:0x22103f" ad-square.mp4`
-- The trailer (YouTube `dw3FqPtr36o`) → pull the best 10 sec for Reels at 9:16.
+| File | Use |
+|---|---|
+| `meta-feed-1x1-1080x1080.jpg` | Meta feed image, square |
+| `meta-feed-4x5-1080x1350.jpg` | Meta/IG feed image, 4:5 (usually outperforms square on IG) |
+| `meta-story-9x16-1080x1920.jpg` | Stories / Reels static |
+| `reddit-feed-1200x628.jpg` | Reddit feed, 1.91:1 |
+| `reddit-feed-1080x1080.jpg` | Reddit feed, square |
+| `video-1x1-1080x1080.mp4` | Meta feed video, ~11s, ends on the wishlist card |
+| `video-9x16-1080x1920.mp4` | Stories / Reels video, logo held in the safe zone |
+| `video-16x9-1920x1080.mp4` | Reddit / YouTube placements, spliced trailer cut: early roll, late roll, big payout, title, wishlist card |
+
+All videos: H.264, 30fps, AAC audio, under 10 MB. Meta autoplays muted, so the cut was chosen to read without sound: a first roll, a later roll with bigger numbers, a +2.9M token payout, the title, then the wishlist card. Logo overlay shows during the two rolls only, so it never doubles up with the end card.
 
 ## Copy drafts
 
