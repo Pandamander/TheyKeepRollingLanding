@@ -1,0 +1,10 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Source art: too large for the site and not needed to serve it.
+# Web-ready versions live in /assets.
+Capsule Assets/**/PSDs/
+Capsule Assets/Library/JPEG_Clean/library_hero.jpg
+Capsule Assets/Library/JPEG_Clean/library_hero no logo.jpg
+Capsule Assets/Library/JPEG_With Dither/library_hero.jpg
