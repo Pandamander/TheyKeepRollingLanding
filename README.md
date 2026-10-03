@@ -2,7 +2,7 @@
 
 Static landing page for the Steam wishlist ad campaign. No build step. Edit the HTML, push to `main`, and GitHub Pages serves it.
 
-- Live (GitHub Pages default): https://pandamander.github.io/TheyKeepRollingLanding/
+- Live (GitHub Pages default): https://theykeeprolling.com/
 - Steam page: https://store.steampowered.com/app/5122910/They_Keep_Rolling_Incremental_Ball_Roller/
 - Demo: https://store.steampowered.com/app/5261020/They_Keep_Rolling_Incremental_Ball_Roller_Demo/
 
@@ -52,7 +52,7 @@ Every Steam link carries UTM parameters (`utm_source=landing&utm_medium=web&utm_
 
 1. Push this repo to GitHub (GitHub Desktop → Push origin).
 2. On github.com: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `(root)` → Save.**
-3. Wait a minute. The site is live at `https://pandamander.github.io/TheyKeepRollingLanding/`.
+3. Wait a minute. The site is live at `https://theykeeprolling.com/`.
 
 ### Custom domain via Cloudflare
 
