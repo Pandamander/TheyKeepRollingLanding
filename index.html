@@ -25,8 +25,10 @@
   <!-- ============================================================
        TRACKING (Eric): paste Meta Pixel / GTM snippets here.
        Use  type="text/plain" data-tracking  instead of a normal
-       script tag. They stay inert until the visitor accepts the
-       cookie banner, then script.js activates them. Example:
+       script tag. script.js activates them once consent allows: EU/UK visitors
+       must click Accept (opt-in); everyone else gets them on page load
+       unless they opt out (footer "Do Not Sell or Share" link, CCPA).
+       The Global Privacy Control signal is honored. Example:
 
        <script type="text/plain" data-tracking>
          !function(f,b,e,v,n,t,s){ ...meta pixel base code... }
@@ -176,14 +178,15 @@
         <a href="https://x.com/PandamanderG" target="_blank" rel="noopener">X / Twitter</a>
         <a href="https://store.steampowered.com/app/5122910/They_Keep_Rolling_Incremental_Ball_Roller/" target="_blank" rel="noopener">Steam</a>
         <a href="privacy.html">Privacy Policy</a>
+        <a href="#" class="js-do-not-sell">Do Not Sell or Share My Personal Information</a>
       </nav>
       <p class="footer-fine">Steam and the Steam logo are trademarks of Valve Corporation. Not affiliated with or endorsed by Valve.</p>
     </div>
   </footer>
 
   <!-- Cookie / tracking consent -->
-  <div class="consent" id="consent" hidden>
-    <p>We use cookies and similar tools (Meta Pixel, Google Tag Manager) to measure how our ads perform. No tracking runs until you accept. <a href="privacy.html">Privacy Policy</a></p>
+  <div class="consent" id="consent" hidden role="region" aria-label="Cookie notice">
+    <p id="consentText">We use cookies and similar tools (Meta Pixel, Google Tag Manager) to measure how our ads perform. <a href="privacy.html">Privacy Policy</a></p>
     <div class="consent-actions">
       <button class="btn btn-ghost btn-small" id="consentDecline">Decline</button>
       <button class="btn btn-primary btn-small" id="consentAccept">Accept</button>
