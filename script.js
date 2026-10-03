@@ -144,12 +144,31 @@
     try { if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName, extra || {}); } catch (e) {}
     try { window.dataLayer.push(Object.assign({ event: eventName.toLowerCase() }, extra || {})); } catch (e) {}
   }
-  Array.prototype.forEach.call(document.querySelectorAll('.js-wishlist'), function (a) {
+  var wishlistLinks = document.querySelectorAll('.js-wishlist');
+  var inboundParams = new URLSearchParams(window.location.search);
+  var inboundKeys = [];
+  inboundParams.forEach(function (value, key) {
+    if (inboundKeys.indexOf(key) === -1) inboundKeys.push(key);
+  });
+  Array.prototype.forEach.call(wishlistLinks, function (a) {
+    // Keep the placement used for the landing-page click event before inbound
+    // utm_content (or any other matching key) replaces the CTA's default.
+    a.setAttribute('data-wishlist-placement', placementOf(a));
+
+    if (inboundKeys.length) {
+      var destination = new URL(a.href, window.location.href);
+      inboundKeys.forEach(function (key) { destination.searchParams.delete(key); });
+      inboundParams.forEach(function (value, key) { destination.searchParams.append(key, value); });
+      a.href = destination.href;
+    }
+
     a.addEventListener('click', function () {
       fire('WishlistClick', { placement: placementOf(a) });
     });
   });
   function placementOf(a) {
+    var placement = a.getAttribute('data-wishlist-placement');
+    if (placement) return placement;
     var m = /utm_content=([^&]+)/.exec(a.getAttribute('href') || '');
     return m ? m[1] : 'unknown';
   }
