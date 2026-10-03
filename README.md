@@ -35,10 +35,9 @@ When tracking is active, `script.js` fires on button clicks:
 | User action | Meta Pixel | dataLayer (GTM) |
 |---|---|---|
 | Any "Wishlist on Steam" button | `fbq('trackCustom','WishlistClick',{placement})` | `{event:'wishlistclick', placement}` |
-| Any "Play the Free Demo" button | `fbq('trackCustom','DemoClick',{placement})` | `{event:'democlick', placement}` |
 | Trailer play | `fbq('trackCustom','TrailerPlay')` | `{event:'trailerplay'}` |
 
-`placement` is `topbar`, `hero`, `hero_demo`, `footer`, or `footer_demo`, so you can see which button converts.
+`placement` is `topbar`, `hero`, or `footer`, so you can see which button converts.
 
 Use `WishlistClick` as the conversion event in Ads Manager. It's the closest thing to a wishlist we can measure from our side, since the actual wishlist happens on Steam.
 

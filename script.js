@@ -59,11 +59,6 @@
       fire('WishlistClick', { placement: placementOf(a) });
     });
   });
-  Array.prototype.forEach.call(document.querySelectorAll('.js-demo'), function (a) {
-    a.addEventListener('click', function () {
-      fire('DemoClick', { placement: placementOf(a) });
-    });
-  });
   function placementOf(a) {
     var m = /utm_content=([^&]+)/.exec(a.getAttribute('href') || '');
     return m ? m[1] : 'unknown';
