@@ -29,7 +29,7 @@ Open `index.html` and find the `TRACKING` comment block in `<head>`. Paste the s
 `script.js` decides when to activate them by region:
 
 - **EU / UK / EEA visitors** (detected from browser time zone): opt-in. Nothing loads until they click **Accept**. Decline or ignore means no pixel and no cookies.
-- **Everyone else** (so, the US audience the ads target): tracking loads on page view. The notice offers **Opt out**, and every page has a footer link **Do Not Sell or Share My Personal Information** (the CCPA requirement). Opting out calls `fbq('consent','revoke')` and sets Google Consent Mode to denied.
+- **Everyone else** (so, the US audience the ads target): tracking loads on page view with no banner. Every page has a footer link **Do Not Sell or Share My Personal Information** (the CCPA requirement). Opting out calls `fbq('consent','revoke')` and sets Google Consent Mode to denied.
 - The **Global Privacy Control** browser signal is treated as an opt-out.
 
 Google Consent Mode v2 defaults are pushed to `dataLayer` before GTM loads, so GA/Ads tags respect the decision without extra setup. In the console, `tkrConsent.status()` and `tkrConsent.region` show what a given browser decided.

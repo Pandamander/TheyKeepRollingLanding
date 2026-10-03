@@ -1,8 +1,8 @@
 /* They Keep Rolling landing page
    1. Regional consent for third-party tracking (Meta Pixel / GTM)
       - EU / UK / EEA visitors: opt-in. Nothing loads until they click Accept.
-      - Everyone else: tracking loads on page view; a notice offers "Opt out",
-        and the footer "Do Not Sell or Share" link opts out at any time (CCPA).
+      - Everyone else: tracking loads on page view with no banner; the footer
+        "Do Not Sell or Share" link opts out at any time (CCPA).
       - The Global Privacy Control browser signal is honored as an opt-out.
       Region comes from the browser's time zone (standard lightweight approach).
    2. Click events on Wishlist buttons for attribution
@@ -77,10 +77,6 @@
       textEl.innerHTML = 'We use cookies and similar tools (Meta Pixel, Google Tag Manager) to measure how our ads perform. Nothing runs until you accept.' + POLICY;
       declineBtn.textContent = 'Decline';
       acceptBtn.textContent = 'Accept';
-    } else if (mode === 'notice') {
-      textEl.innerHTML = 'We use cookies and similar tools (Meta Pixel, Google Tag Manager) to measure how our ads perform.' + POLICY;
-      declineBtn.textContent = 'Opt out';
-      acceptBtn.textContent = 'Got it';
     } else { // 'optedout'
       textEl.innerHTML = 'You are opted out of ad measurement on this site.' + POLICY;
       declineBtn.hidden = true;
@@ -126,8 +122,7 @@
   } else if (optIn) {
     showBanner('optin');
   } else {
-    loadTracking();
-    showBanner('notice');
+    loadTracking();   // no banner; the footer "Do Not Sell or Share" link is the CCPA control
   }
 
   // For testing in the console: tkrConsent.status(), tkrConsent.region, tkrConsent.needsOptInFor('Europe/Berlin')
